@@ -8,8 +8,10 @@ on:
 jobs:
   pre-commit-update:
     name: Update pre-commit
+    if: github.repository == 'beeware/toga'
     uses: beeware/.github/.github/workflows/pre-commit-update.yml@main
-    secrets: inherit
+    secrets:
+      BRUTUS_PAT_TOKEN: ${{ secrets.BRUTUS_PAT_TOKEN }}
     with:
       pre-commit-source: "--group pre-commit"
       changenote-format: "md"
